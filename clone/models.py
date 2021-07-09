@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-
+from tinymce.models import HTMLField
 # Create your models here.
 # class Poster(models.Model):
 #     name = models.CharField(max_length=255,primary_key=True)
@@ -44,6 +44,8 @@ class Profile(models.Model):
 class Image(models.Model):
     name = models.CharField(max_length=30,primary_key=True)
     image = models.ImageField(upload_to='MEDIA/')
+    post=HTMLField()
+    poster=models.ForeignKey('User,on_delete=models.CASCADE')
     caption=models.CharField(max_length=30)
     Profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
     Likes = models.ForeignKey(Likes,on_delete=models.CASCADE)
