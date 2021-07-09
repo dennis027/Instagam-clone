@@ -44,8 +44,8 @@ class Profile(models.Model):
 class Image(models.Model):
     name = models.CharField(max_length=30,primary_key=True)
     image = models.ImageField(upload_to='MEDIA/')
-    post=HTMLField()
-    poster=models.ForeignKey('User,on_delete=models.CASCADE')
+    # post=HTMLField()
+    # poster=models.ForeignKey('User,on_delete=models.CASCADE')
     caption=models.CharField(max_length=30)
     Profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
     Likes = models.ForeignKey(Likes,on_delete=models.CASCADE)
