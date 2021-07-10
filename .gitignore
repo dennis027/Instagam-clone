@@ -2,3 +2,4 @@ virtual/
 *pyc
 venv/
 start.sh
+.env
