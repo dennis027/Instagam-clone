@@ -52,9 +52,9 @@ class Image(models.Model):
     post=HTMLField()
     poster= models.ForeignKey(User,on_delete=models.CASCADE)
     caption=models.CharField(max_length=30)
-    Profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
-    Likes = models.ForeignKey(Likes,on_delete=models.CASCADE)
-    Comments = models.ForeignKey(Comments,on_delete=models.CASCADE)
+    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    likes = models.ForeignKey(Likes,on_delete=models.CASCADE)
+    comments = models.ForeignKey(Comments,on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 

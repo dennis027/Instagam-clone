@@ -1,4 +1,4 @@
-from clone.models import Image
+from clone.models import *
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
