@@ -1,11 +1,16 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from tinymce.models import HTMLField
+from django.contrib.auth.models import User
+
 # Create your models here.
-# class Poster(models.Model):
-#     name = models.CharField(max_length=255,primary_key=True)
-#     def __str__(self):
-#         return self.name
+class Poster(models.Model):
+    first_name = models.CharField(max_length =30)
+    last_name = models.CharField(max_length =30)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length = 10,blank =True)
+    def __str__(self):
+        return self.name
 class Likes(models.Model):
     name = models.CharField(max_length=30,primary_key=True)
     def __str__(self):
@@ -44,8 +49,8 @@ class Profile(models.Model):
 class Image(models.Model):
     name = models.CharField(max_length=30,primary_key=True)
     image = models.ImageField(upload_to='MEDIA/')
-    # post=HTMLField()
-    # poster=models.ForeignKey('User,on_delete=models.CASCADE')
+    post=HTMLField()
+    poster= models.ForeignKey(User,on_delete=models.CASCADE)
     caption=models.CharField(max_length=30)
     Profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
     Likes = models.ForeignKey(Likes,on_delete=models.CASCADE)
