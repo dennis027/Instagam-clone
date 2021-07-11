@@ -3,9 +3,9 @@ from .models import *
 from django import forms
 class NewImageForm(ModelForm):
     class Meta: 
-        models=Image
+        model=Poster
         fields=[
-            'first name'
+            'first_name'
         ]
        
         widget= {
