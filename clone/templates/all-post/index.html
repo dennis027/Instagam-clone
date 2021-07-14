@@ -1,55 +1,44 @@
 {%extends 'all-post/base.html'%}
-
 {%block content%}
-{{block.super}}
-<div class="col-sm-6 col-md-6">
-    {% if user.is_authenticated %}
-    <ul>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                  <span class="caret"></span>
-              </a>
-        <ul class="dropdown-menu" role="menu">
-          <li>
-            <a href="{%url 'welcome'%}">Home</a>
-          </li>
-          <li>
-            <a href="{%url 'new-post'%}">Create Post</a>
-          <li>
-            <a href="/accounts/password/change">Change Password</a>
-          </li>
-          <li>
-            <a href="/logout">Logout</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    {% else %}
-    <li>
-      <a class='btn btn-default' href="/accounts/login">Login</a>
-    </li>
-
-    <img src="{{post.post_image.url}}"  class="img-responsive" alt="">
-
-    {% endif %}
-
-  </div>
-<h1>Welcome To Instagram</h1>
-
 {%for post in posts%}
-<div class="row">
-  <img src="{{post.image.url}}"  class="img-responsive" alt="">
-  <p>{{post.caption}}</p>
-</div>
 
-<div class="row">
-  <h1 class="text-center">{{post.title}}</h1>
-</div>
+    <div class="card">
+        <div class="card-header">
+            <div class="profile_image">
 
-<div class="row">
-  {% autoescape on %}
-  {{post.post| safe}}
- {% endautoescape %}
-{%endfor%}
-</div>
+            </div>
+            <div class="post_info">
+                <div class ="post_name">{{post.author}}</div>
+                <div class ="post_location">Kisumu</div>
+            </div>
+            <div class="post_options"><i class ="fas fa-ellipsis-h"></i></div>
+        <div class="post_image">
+            {%if post.image%}
+            <img src="{{post.image.url}}" class="img-responsive" alt="">
+            {%endif%}
+        </div>
+            
+        </div>
+    
+        <div class ="engagement">
+            <a href=""><i class = 'far fa-heart'></i></a>
+            <a href=""><i class = 'far fa-comment'></i></a>
+            <a href=""><i class = 'far fa-share-square'></i></a>
+            <a href=""><i class = 'far fa-bookmark'></i></a>
+        </div>
+        <div class="likes">
+            <a href="">345</a>
+        </div>
+        <div class="caption">
+            <a href="">{{post.author}}</a>
+            <span><p>{{post.caption}}</p></span>
+        </div>
+        <div class="time_posted">
+            {{post.created_date | timesince }} ago
+        </div>
+    </div>
+    
+
+ 
+      {% endfor %}
 {%endblock%}

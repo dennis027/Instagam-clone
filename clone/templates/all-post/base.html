@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     {%if title%}
     <title>Instagram -{{title}}</title>
     {%else%}
@@ -14,6 +15,8 @@
 
   {% block styles %}
   {% bootstrap_css %}
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
    {% endblock %}
 </head>
@@ -21,7 +24,7 @@
 
 
     {% include "navbar.html" %}
-    
+
     {%block content%}
 
     {%endblock%}
