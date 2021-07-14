@@ -6,7 +6,8 @@ from django.urls import reverse
 
 urlpatterns=[
     url('^$',views.welcome,name = 'welcome'),
-    url(r'^new/post', views.new_post, name='new-post')
+    url(r'^new/post', views.new_post, name='new-post'),
+    url(r'^search/', views.search_results, name='search_results')
     # url(r'^new/welcome$', views.welcome, name='new-post'),
   
 ]

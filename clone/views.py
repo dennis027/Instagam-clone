@@ -47,3 +47,16 @@ def new_post(request):
 
 # sending welcome email
     # send_welcome_email(name,email)
+
+def search_results(request):
+
+    if 'post' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-news/search.html',{"message":message,"images": searched_images})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-news/search.html',{"message":message})    
