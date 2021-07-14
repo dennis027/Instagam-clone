@@ -1,4 +1,5 @@
 {%extends 'all-post/base.html'%}
+
 {%block content%}
 {{block.super}}
 <div class="col-sm-6 col-md-6">
@@ -28,7 +29,27 @@
       <a class='btn btn-default' href="/accounts/login">Login</a>
     </li>
 
+    <img src="{{post.post_image.url}}"  class="img-responsive" alt="">
+
     {% endif %}
+
   </div>
 <h1>Welcome To Instagram</h1>
+
+{%for post in posts%}
+<div class="row">
+  <img src="{{post.image.url}}"  class="img-responsive" alt="">
+  <p>{{post.caption}}</p>
+</div>
+
+<div class="row">
+  <h1 class="text-center">{{post.title}}</h1>
+</div>
+
+<div class="row">
+  {% autoescape on %}
+  {{post.post| safe}}
+ {% endautoescape %}
+{%endfor%}
+</div>
 {%endblock%}

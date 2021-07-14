@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 # Create your models here.
 class Poster(models.Model):
     first_name = models.CharField(max_length =30)
@@ -52,9 +52,9 @@ class Image(models.Model):
     post=HTMLField()
     poster= models.ForeignKey(User,on_delete=models.CASCADE)
     caption=models.CharField(max_length=30)
-    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
-    likes = models.ForeignKey(Likes,on_delete=models.CASCADE)
-    comments = models.ForeignKey(Comments,on_delete=models.CASCADE)
+    # profile=models.ForeignKey(Profile,on_delete=models.CASCADE,default='')
+    # likes = models.ForeignKey(Likes,on_delete=models.CASCADE,default='')
+    # comments = models.ForeignKey(Comments,on_delete=models.CASCADE,default='')
     def __str__(self):
         return self.name
 

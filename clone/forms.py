@@ -3,13 +3,21 @@ from .models import *
 from django import forms
 class NewImageForm(ModelForm):
     class Meta: 
-        model=Poster
+        model=Image
         fields=[
-            'first_name'
+            'image', 
+            'caption',
+            
         ]
        
         widget= {
-            'name': forms.Textarea(attrs={
-                'class': 'form-control',
-            })
+            # 'image': forms.ImageField(attrs={
+            #     'class': 'form-control',
+            # }),
+            # 'caption': forms.Textarea(attrs={
+            #     'class': 'form-control',
+            # })
+          
+
+            
         }

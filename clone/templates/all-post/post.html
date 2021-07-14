@@ -1,5 +1,25 @@
 {%extends 'all-post/base.html'%}
 {%block content%}
 {{block.super}}
-
+<div class="container">
+  {%for post in posts%}
+    <div class="row">
+      <img src="{{post.post_image.url}}"  class="img-responsive" alt="">
+    </div>
+ 
+    <div class="row">
+      <h1 class="text-center">{{post.title}}</h1>
+    </div>
+ 
+    <div class="row">
+      {% autoescape on %}
+      {{post.post| safe}}
+     {% endautoescape %}
+  {%endfor%}
+    </div>
+ 
+  
+ 
+  </div>
+ 
 {%endblock%}
