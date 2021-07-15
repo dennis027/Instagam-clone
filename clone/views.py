@@ -7,7 +7,7 @@ from .email import send_welcome_email
 from django.http import JsonResponse
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+
 def welcome(request):
     posts =Image.objects.all()
     current_user = request.user
