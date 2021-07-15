@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-# development
+#development
 if config('MODE')=="dev":
    DATABASES = {
        'default': {
