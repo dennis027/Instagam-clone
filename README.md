@@ -79,7 +79,7 @@ If you have any question or contributions, please email me at [machariad196@gmai
 * [License]click here to view
 
 ## Aknowledgments
-*Ken Githaiga[github.com/kmaina]
+*[Ken_Githaiga](github.com/kmaina)
 
 
 
