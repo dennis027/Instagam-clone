@@ -21,3 +21,17 @@ class NewImageForm(ModelForm):
 
             
         }
+
+class DetailsForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user']
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        exclude = ['profile','date','like']
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['comment']

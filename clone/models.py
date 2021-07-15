@@ -3,6 +3,7 @@ from django.db.models.deletion import CASCADE
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils import timezone
 # Create your models here.
 class Poster(models.Model):
     first_name = models.CharField(max_length =30)
@@ -12,7 +13,7 @@ class Poster(models.Model):
     def __str__(self):
         return self.name
 class Likes(models.Model):
-    name = models.CharField(max_length=30,primary_key=True)
+    name = models.CharField(max_length=30)
     def __str__(self):
         return self.name
     def save_like(self):
@@ -24,15 +25,20 @@ class Likes(models.Model):
         cls.objects.filter(id=id).update(like=object)    
 
 class Comments(models.Model):
-    comment = models.CharField(max_length=255,primary_key=True)
-    # poster_id= models.ForeignKey=(Poster)
+    comment = models.CharField(max_length=255)
+    poster= models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comment
 class Follower(models.Model) :
-    pass       
+    username = models.CharField(blank=True,max_length = 255)
+    followed = models.CharField(blank=True,max_length = 255)
+
+    def __str__(self):
+        return f'{self.username}'
+     
 class Profile(models.Model):
-    bio = models.CharField(max_length=100,primary_key=True)
+    bio = models.CharField(max_length=100)
     Profile_photo= models.ImageField(upload_to='MEDIA/')
 
     def __str__(self):
@@ -50,11 +56,12 @@ class Image(models.Model):
     name = models.CharField(max_length=30,primary_key=True)
     image = models.ImageField(upload_to='MEDIA/')
     post=HTMLField()
-    poster= models.ForeignKey(User,on_delete=models.CASCADE)
+    #poster= models.ForeignKey(User,on_delete=models.CASCADE)
     caption=models.CharField(max_length=30)
-    # profile=models.ForeignKey(Profile,on_delete=models.CASCADE,default='')
-    # likes = models.ForeignKey(Likes,on_delete=models.CASCADE,default='')
-    # comments = models.ForeignKey(Comments,on_delete=models.CASCADE,default='')
+    # created_date = models.DateTimeField(default=timezone.now)
+    # profile_id=models.ForeignKey(User,related_name='profile')
+    # likes_id = models.ForeignKey(User,related_name='likes')
+    # comments_id = models.ForeignKey(User,related_name='comment')
     def __str__(self):
         return self.name
 

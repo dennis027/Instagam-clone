@@ -22,7 +22,19 @@
     
         <div class ="engagement">
             <a href=""><i class = 'far fa-heart'></i></a>
-            <a href=""><i class = 'far fa-comment'></i></a>
+            <a href="{% url 'post_detail'%}"><i class = 'far fa-comment'></i>
+              {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+            </a>
             <a href=""><i class = 'far fa-share-square'></i></a>
             <a href=""><i class = 'far fa-bookmark'></i></a>
         </div>
