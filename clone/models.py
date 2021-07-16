@@ -56,12 +56,12 @@ class Image(models.Model):
     name = models.CharField(max_length=30,primary_key=True)
     image = models.ImageField(upload_to='MEDIA/')
     post=HTMLField()
-    poster= models.ForeignKey(User,on_delete=models.CASCADE)
+    # poster= models.ForeignKey(User,on_delete=models.CASCADE)
     caption=models.CharField(max_length=30)
     # created_date = models.DateTimeField(default=timezone.now)
-    profile_id=models.ForeignKey(User,related_name='profile',on_delete=models.CASCADE)
-    likes_id = models.ForeignKey(User,related_name='likes',on_delete=models.CASCADE)
-    comments_id = models.ForeignKey(User,related_name='comment',on_delete=models.CASCADE)
+    # profile_id=models.ForeignKey(User,related_name='profile',on_delete=models.CASCADE)
+    # likes_id = models.ForeignKey(User,related_name='likes',on_delete=models.CASCADE)
+    # comments_id = models.ForeignKey(User,related_name='comment',on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 

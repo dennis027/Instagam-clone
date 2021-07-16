@@ -17,6 +17,7 @@ def welcome(request):
             image = form.save(commit=False)
             image.poster = current_user
             image.save()
+            send_welcome_email(name,email)
         return HttpResponseRedirect('welcome')
     else:
         form = NewImageForm()
