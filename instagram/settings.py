@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from decouple import config, Csv
-import django_on_heroku
+import django_heroku
 import dj_database_url
 MODE=config("MODE",default="dev")
 SECRET_KEY=config('SECRET_KEY')
@@ -137,4 +137,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_on_heroku.settings(locals())
+django_heroku.settings(locals())
